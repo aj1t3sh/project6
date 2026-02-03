@@ -40,7 +40,7 @@ export default class App extends Component {
               <th>Email</th>
             </tr>
             {data.map((user)=>(
-            <tr>
+            <tr key={user.id} onClick={() => this.showUserInfo(user)}>
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.username}</td>
@@ -52,48 +52,40 @@ export default class App extends Component {
         </div>
         <div className='footer'> Copyright @ 2026. -Ajitesh Karan</div>
         </div>
-        {showpopup && <div className='overlay'>
-          <div className='popup'>
-            <div className='popupHeader'>
-              <button onClick={()=>this.closeUserInfo()}>X</button>
-            </div>
-            <div className='popupSection'>
-              <p>
-                <span>ID</span>
-                <span>{userdata.id}</span>
-              </p>
-              <p>
-                <span>Name</span>
-                <span>{userdata.name}</span>
-              </p>
-              <p>
-                <span>Username</span>
-                <span>{userdata.username}</span>
-              </p>
-              <p>
-                <span>Email ID</span>
-                <span>{userdata.email}</span>
-              </p>
-              <p>
-                <span>Address</span>
-                <span>{userdata.address.street}, {userdata.address.city} - {userdata.address.zipcode}</span>
-              </p>
-              <p>
-                <span>Phone</span>
-                <span>{userdata.phone}</span>
-              </p>
-              <p>
-                <span>Website</span>
-                <span>{userdata.website}</span>
-              </p>
-              <p>
-                <span>Company</span>
-                <span>{userdata.company.name}<br/>{userdata.company.bs}</span>
-              </p>
-            </div>
-            <div className='popupFooter'></div>
-          </div>
-          </div>}
+        {showpopup && (
+  <div className="overlay">
+    <div className="modal">
+      <div className="modalHeader">
+        <span>User Details</span>
+        <button onClick={this.closeUserInfo}>✕</button>
+      </div>
+
+      <div className="modalBody">
+        <div><label>ID</label><span>{userdata.id}</span></div>
+        <div><label>Name</label><span>{userdata.name}</span></div>
+        <div><label>Username</label><span>{userdata.username}</span></div>
+        <div><label>Email</label><span>{userdata.email}</span></div>
+        <div>
+          <label>Address</label>
+          <span>
+            {userdata.address.street}, {userdata.address.city} - {userdata.address.zipcode}
+          </span>
+        </div>
+        <div><label>Phone</label><span>{userdata.phone}</span></div>
+        <div><label>Website</label><span>{userdata.website}</span></div>
+        <div>
+          <label>Company</label>
+          <span>
+            {userdata.company.name}<br />
+            {userdata.company.bs}
+          </span>
+        </div>
+      </div>
+
+      <div className="modalFooter"></div>
+    </div>
+  </div>
+)}
       </div>
     )
   }

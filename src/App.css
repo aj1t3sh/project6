@@ -150,3 +150,68 @@ tr:hover {
   color: #fff;
   font-weight: 500;
 }
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 520px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  animation: scaleIn 0.25s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modalHeader {
+  background: #000000;
+  color: white;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.modalHeader button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 18px;
+}
+
+.modalBody div {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.modalBody label {
+  color: #555;
+}
+
+.modalBody span {
+  color: #222;
+}
+
+.modalFooter {
+  height: 8px;
+  background: #262728;
+}
